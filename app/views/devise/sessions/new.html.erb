@@ -2,10 +2,13 @@
 <h2>Log in</h2>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
 <body class="text-center">
+
   <div class=border border-dark >  
       <form class="form-signin">
       <i class="fas fa-5x fa-address-card"></i>
+      <%= render 'devise/shared/error_messages', model: f.object %>
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <div class="form-group">
     <label>Email:</label><br />

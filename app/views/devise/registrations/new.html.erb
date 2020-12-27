@@ -3,10 +3,12 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+
 <div class="preview text-center">
+
   <div class=border border-dark >  
     <i class="fas fa-5x fa-user-plus"></i>
+      <%= render 'devise/shared/error_messages', model: f.object %>
       <div class="form-group">
         <label>Nickname:</label><br>
         <i class="fas fa-signature"></i>
@@ -37,8 +39,9 @@
       <%= f.submit "Sign up" %>
     </div>
   </div>
+  <%= render "devise/shared/links" %>
 </div>
 </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
