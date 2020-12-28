@@ -27,19 +27,23 @@
 
 ## rooms
 
-| Column | Type | Options |
-| name | string | null: false |
-|text | string | |
+| Column   | Type    | Options     |
+| -------- | ------- | ----------- |
+| name     | string  | null: false |
+| text     | string  |             |
+| category | integer |             |
 
 ## room_users
 
-| Column | Type | Options |
-|room_id | reference | null: false, foreign_key: true|
-|user_id | reference | null: false, foreign_key: true|
+| Column  | Type      | Options                        |
+| ------- | --------- | ------------------------------ |
+| room_id | reference | null: false, foreign_key: true |
+| user_id | reference | null: false, foreign_key: true |
 
 ## messages
 
-| Column | Type | Options |
-|content | string | null: false |
-|user_id | reference | null: false, foreign_key: true|
-|room_id | reference | null: false, foreign_key: true|
+| Column  | Type      | Options                        |
+| ------- | --------- | ------------------------------ |
+| content | string    | null: false                    |
+| user_id | reference | null: false, foreign_key: true |
+| room_id | reference | null: false, foreign_key: true |
