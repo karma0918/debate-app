@@ -54,12 +54,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
-<<<<<<< HEAD
+
 gem 'devise'
 gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'pry-rails'
-=======
-gem 'devise'
->>>>>>> parent of aef75d4... テストコード環境設定
+
+
