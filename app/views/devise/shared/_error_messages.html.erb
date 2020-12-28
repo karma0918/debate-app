@@ -1,8 +1,13 @@
+<style>
+.red-color {
+  color: red;
+}
+</style>
 <% if model.errors.any? %>
 <div class="error-alert">
   <ul>
     <% model.errors.full_messages.each do |message| %>
-    <li class='error-message'><%= message %></li>
+    <li class='error-message red-color'><%= message %></li>
     <% end %>
   </ul>
 </div>
