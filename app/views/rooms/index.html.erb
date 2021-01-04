@@ -1,0 +1,41 @@
+<%= render "devise/shared/header" %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+
+<style>
+.color-room {
+  color: white;
+}
+.back-color{
+  background-color: #f5f5f5;
+}
+</style>
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron ">
+    <div class="container">
+      <h1 class="display-3">ディベートをしよう！</h1>
+      <p>今すでにあるルームに入ってもらうかまたは自分でお題を作って新規でルームを作ることができます ⚠(サインインしている必要があります)</p>
+      <div class="btn btn-primary btn-lg" >
+      <p><%=link_to 'ルーム作成', new_room_path, class: "color-room" %><i class="fas fa-angle-double-right"></i></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container marketing">
+    <!-- Example row of columns -->
+
+
+     <% @rooms.each do |room| %>
+      <div class="row back-color border border-secondary ">
+      <div class="col-md-4">
+        <h2>タイトル・<%= room.name%></h2>
+        <p>詳細・<%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
+        <p><i class="fas fa-comment-dots"></i><a class="btn btn-primary" href="#" role="button">部屋に入る &raquo;</a></p>
+      </div>
+    </div> 
+    <%end%>
+  
+  </div>  
+
+</main>
