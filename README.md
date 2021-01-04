@@ -27,11 +27,11 @@
 
 ## rooms
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| name     | string  | null: false |
-| text     | string  |             |
-| category | integer |             |
+| Column      | Type    | Options     |
+| ----------- | ------- | ----------- |
+| name        | string  | null: false |
+| explanation | string  |             |
+| category    | integer |             |
 
 ## room_users
 
