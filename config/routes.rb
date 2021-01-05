@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'users/index'
   root to: "rooms#index"
   resources :users, only: [:index]
-  resources :rooms, only: [:index, :new, :create]
+  resources :rooms, only: [:index, :new, :create] do
+    resources :messages, only: [:index]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
