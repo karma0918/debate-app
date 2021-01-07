@@ -27,11 +27,12 @@
 
 
      <% @rooms.each do |room| %>
-      <div class="row back-color border border-secondary ">
+      <div class="row back-color border border-secondary mb-3">
       <div class="col-md-4">
         <h2>タイトル・<%= room.name%></h2>
         <p>詳細・<%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
-        <p><i class="fas fa-comment-dots"></i><a class="btn btn-primary" href="#" role="button">部屋に入る &raquo;</a></p>
+        <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
+
       </div>
     </div> 
     <%end%>

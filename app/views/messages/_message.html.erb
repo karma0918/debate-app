@@ -1,17 +1,9 @@
-<div class="message">
-  <div class="upper-message">
-    <div class="message-user">
-      <%= message.user.name %>
-    </div>
-    <div class="message-date">
-      <%= l message.created_at %>
-
-    </div>
-  </div>
-  <div class="lower-message">
-    <div class="message-content">
-      <%= message.content %>
-    </div>
-    <%= image_tag message.image.variant(resize: '500x5000'), class: 'message-image' if message.image.attached? %>
-  </div>
-</div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <%= form_with model: [@room, @message], local: true do |f|%>
+              
+                <%= f.text_field :content, class: 'write_msg', placeholder: 'type a messaage' %>
+                <i class="fa fa-paper-plane-o" aria-hidden="true"></i><%= f.submit '送信', class: 'btn btn-primary' %>
+                <% end %>
+            </div>
+          </div>
