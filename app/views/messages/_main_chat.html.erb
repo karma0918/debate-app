@@ -1,24 +1,26 @@
-<div class="chat-header">
-  <div class="chat-left">  
-    <%= @room.name %>
-  </div>
-  <div class="chat-right">
-    <%= link_to 'チャットルームを終了する', room_path(@room), method:  :delete%>
-  </div>
-</div>
-<div class="messages">
-<%= render partial: 'message', collection: @messages %>
+<div class="container scrol ming">
+<h3 class=" text-center "><%=@room.name%> </h3>
+<div class="messaging">
+    <div class="inbox_msg">
+        <div class="msg_history">
+      <% @messages.each do |message|%>
+          <% if current_user.id == message.user_id %>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p><%=message.content%></p>
+                  <div class="time_date"> <%=message.created_at%>    |   <%=message.user_id%> </div>
+                </div>
+              </div>
+          <% else %>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p><%=message.content%></p>
+                <div class="time_date"> <%=message.created_at%>    |    <%=message.user_id%>  </div>
+              </div>
+            </div>
+          <%end%>
+      <%end%>
+        </div>
+    </div>
 
-</div>
-<div class="form">
-<%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
-  <div class="form-input">
-    <%= f.text_field :content, class: 'form-message', placeholder: 'type a messaage' %>
-    <label class="form-image">
-      <span class="image-file">画像</span>
-      <%= f.file_field :image, class: 'hidden' %>
-    </label>
-  </div>
-  <%= f.submit '送信', class: 'form-submit' %>
-<% end %>
 </div>
