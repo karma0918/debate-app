@@ -8,6 +8,7 @@
 <div class='container '>
   <h1 class="mtoriginal">新規チャットルーム</h1>
   <%=form_with model: @room,url: rooms_path, local: true do |f|%>
+    <%= render 'devise/shared/error_messages', model: f.object %>
     <div class='form-group'>
         <%= f.label :チャットルーム名, class: ' '%><i class="fas fa-signature"></i>
         <%= f.text_field :name, class: 'form-control form-control-lg', placeholder: 'チャットルーム名を入力してください'%>

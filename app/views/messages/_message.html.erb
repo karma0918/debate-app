@@ -1,9 +1,9 @@
           <div class="type_msg">
             <div class="input_msg_write">
               <%= form_with model: [@room, @message], local: true do |f|%>
-              
-                <%= f.text_field :content, class: 'write_msg', placeholder: 'type a messaage' %>
-                <i class="fa fa-paper-plane-o" aria-hidden="true"></i><%= f.submit '送信', class: 'btn btn-primary' %>
+                    <%= render 'devise/shared/error_messages', model: f.object %>
+                <i class="fas fa-search mr-3" style="color: royalblue;"></i><%= f.text_field :content, class: 'write_msg', placeholder: 'type a messaage' %>
+                <i class="fa fa-paper-plane-o" aria-hidden="true"></i><i class="fas fa-paper-plane"></i><%= f.submit '送信', class: 'btn btn-primary' %>
                 <% end %>
             </div>
           </div>
