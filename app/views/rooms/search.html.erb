@@ -11,19 +11,13 @@
       <li class="nav-item active">
         <a class="nav-link" href="/"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
       </li>
-        <li class="nav-item nav-link">
-          <%= link_to "検索",search_rooms_path %>
-        </li>
       <% if user_signed_in? %>
        <li class="nav-item nav-link">
           <i class="fas fa-sign-in-alt"></i><%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
         </li>
-
         <li class="nav-item nav-link">
           <%= link_to current_user.nickname, "#" %>
         </li>
-
-
       <%else%>
         <li class="nav-item nav-link ">
           <i class="fas fa-sign-in-alt"></i><%= link_to "ログイン",new_user_session_path %>
@@ -33,14 +27,60 @@
         </li>
       <%end%>
     </ul>
+  </div>
+  </nav>
+</header>
+<style>
+.color-room {
+  color: white;
+}
+.back-color{
+  background-color: #f5f5f5;
+}
+.shadow{
+  box-shadow: 4px 4px;
+}
+</style>
+<main role="main">
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><i class="fas fa-bomb"></i> ディベートをしよう！</h1>
+      <p>今すでにあるルームに入ってもらうかまたは自分でお題を作って新規でルームを作ることができます ⚠(サインインしている必要があります)</p>
+
+      <div class="btn btn-primary btn-lg" >
+      <p><%=link_to 'ルーム作成', new_room_path, class: "color-room" %><i class="fas fa-angle-double-right"></i></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container marketing">
+<% unless user_signed_in? %>
+  <div class="alert alert-danger" role="alert">
+  ログインしていないと部屋に入れません！ログインしましょう
+</div>
+<% end %>
+
 
     <%= search_form_for @q, class: "form-inline my-2 my-lg-0",url:search_rooms_path do |f| %>
     <div class="navbar-brand">Room検索</div>
         
         <i class="fas fa-search mr-3" style="color: royalblue;"></i>
         <%= f.search_field :name_cont, class:"form-control mr-sm-2" %>
+        <div class="form-group ">
+         <%= f.select :category_id_eq, options_from_collection_for_select(Category.all, :id, :name),class: "form-control form-control-lg" %>
+        </div>
         <%= f.submit 'Search',class:"btn btn-secondary my-2 my-sm-0" %>
     <%end%>
-  </div>
-  </nav>
-</header>
+
+
+     <% @results.each do |room| %>
+      <div class="row back-color border border-secondary mb-3 shadow rounded-pill" >
+      <div class="col-md-4 text-center">
+        <h2>TITLE・<%= room.name%></h2>
+        <p>詳細・<%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
+        <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
+      </div>
+    </div> 
+    <%end%>
+    </main>

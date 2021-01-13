@@ -8,15 +8,17 @@
 .back-color{
   background-color: #f5f5f5;
 }
+.shadow{
+  box-shadow: 4px 4px;
+}
 </style>
 <main role="main">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron ">
+  <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">ディベートをしよう！</h1>
+      <h1 class="display-3"><i class="fas fa-bomb"></i> ディベートをしよう！</h1>
       <p>今すでにあるルームに入ってもらうかまたは自分でお題を作って新規でルームを作ることができます ⚠(サインインしている必要があります)</p>
-      <%if %>
+
       <div class="btn btn-primary btn-lg" >
       <p><%=link_to 'ルーム作成', new_room_path, class: "color-room" %><i class="fas fa-angle-double-right"></i></p>
       </div>
@@ -24,13 +26,16 @@
   </div>
 
   <div class="container marketing">
-    <!-- Example row of columns -->
-
+<% unless user_signed_in? %>
+  <div class="alert alert-danger" role="alert">
+  ログインしていないと部屋に入れません！ログインしましょう
+</div>
+<% end %>
 
      <% @rooms.each do |room| %>
-      <div class="row back-color border border-secondary mb-3">
-      <div class="col-md-4">
-        <h2>タイトル・<%= room.name%></h2>
+      <div class="row back-color border border-secondary mb-3 shadow rounded-pill" >
+      <div class="col-md-4 text-center">
+        <h2>TITLE・<%= room.name%></h2>
         <p>詳細・<%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
         <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
       </div>
@@ -38,5 +43,7 @@
     <%end%>
   
   </div>  
+  
+  <%= paginate @rooms %>
 
 </main>
