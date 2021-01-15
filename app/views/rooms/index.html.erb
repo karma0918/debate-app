@@ -36,8 +36,11 @@
       <div class="row back-color border border-secondary mb-3 shadow rounded-pill" >
       <div class="col-md-4 text-center">
         <h2>TITLE・<%= room.name%></h2>
+                        <%= image_tag room.image.variant(resize: '120x120'),class: 'rounded-pil float-sm-right' %>
         <p>詳細・<%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
         <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
+
+
       </div>
     </div> 
     <%end%>
