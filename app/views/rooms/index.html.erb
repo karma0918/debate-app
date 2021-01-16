@@ -11,6 +11,9 @@
 .shadow{
   box-shadow: 4px 4px;
 }
+.out-width{
+  width: 500px;
+}
 </style>
 <main role="main">
 
@@ -31,18 +34,23 @@
   ログインしていないと部屋に入れません！ログインしましょう
 </div>
 <% end %>
-
+<div class="row">
      <% @rooms.each do |room| %>
-      <%= image_tag room.image.variant(resize: '190x190'), class: 'rounded-circle ' %>
-      <div class="row back-color border border-secondary mb-3 shadow rounded-pill ml-5 mr-5" >
-      <div class="col-md-4 text-center">
-        <h2>TITLE・<%= room.name%></h2>
-        <p><%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
-        <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
-
+     <div class="border border-primary mt-5 out-width ">
+      <div class="text-center">
+        <%= image_tag room.image.variant(resize: '190x190'), class: 'rounded-circle ' %>
       </div>
-    </div> 
+      <div class=" back-color border border-secondary mb-3 shadow rounded-left ml-5 mr-5" >
+        <div class="col text-center">
+          <h2 class="ml-3">TITLE・<%= room.name%></h2>
+          <p><%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
+          <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
+
+        </div>
+      </div> 
+    </div>
     <%end%>
+  </div>
   
   </div>  
   
