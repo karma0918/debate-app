@@ -1,7 +1,7 @@
 <div class="container scrol ming">
 <h3 class=" text-center "><%=@room.name%> </h3>
 <div class="messaging">
-    <div class="inbox_msg" ,id= "scroll">
+    <div class="inbox_msg pt-3" ,id= "scroll">
         <div class="msg_history">
         
       <% @messages.each do |message|%>
@@ -30,9 +30,4 @@
   ⚠マナーを守って楽しくチャットしましょう。！！
 </div>
 </div>
-<script>
-window.addEventListener('load', () => {
-var messageBody = document.querySelector('#msg_history');
-messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
-};
-</script>
+

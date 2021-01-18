@@ -40,6 +40,17 @@
 .shadow{
   box-shadow: 4px 4px;
 }
+.out-width{
+  width: 500px;
+
+}
+.h-set {
+  height:200px;
+}
+.h-set-auto{
+  height :auto ;
+}
+
 </style>
 <main role="main">
 
@@ -72,16 +83,16 @@
         </div>
         <%= f.submit 'Search',class:"btn btn-secondary my-2 my-sm-0" %>
     <%end%>
-
+  <h1 class="text-center mb-3 mt-3">検索結果↓↓</h1>
     <div class="row">
       <% @results.each do |room| %>
-        <div class="border border-primary mt-5 out-width ">
-          <div class="text-center">
+        <div class="border border-primary mt-5 out-width ml-3 shadow pt-3">
+          <div class="text-center h-set">
             <%= image_tag room.image.variant(resize: '190x190'), class: 'rounded-circle ' %>
           </div>
           <div class=" back-color border border-secondary mb-3 shadow rounded-left ml-5 mr-5" >
-            <div class="col text-center">
-              <h2 class="ml-3">TITLE・<%= room.name%></h2>
+            <div class="col text-center h-set-auto">
+              <h2 class="ml-3 "><%= room.name%></h2>
               <p><%=room.explanation%></p><p>ジャンル・<%= room.category.name%></p>
               <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
 
