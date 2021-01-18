@@ -86,3 +86,8 @@ https://github.com/karma0918/debate-app
 | content | string    | null: false                    |
 | user_id | reference | null: false, foreign_key: true |
 | room_id | reference | null: false, foreign_key: true |
+
+ローカルでの動作方法
+version
+rails 6.0.0
+ruby 2.6.5
