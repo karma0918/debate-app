@@ -1,7 +1,7 @@
 class Room < ApplicationRecord
 
   with_options presence: true do
-    validates :name
+    validates :name, length: { maximum: 50 }
     validates :explanation, length: { maximum: 256 }
     validates :category_id, numericality: { other_than: 1 }
     validates :image
