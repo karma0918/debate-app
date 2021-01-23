@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
   devise_for :users
   get 'users/index'
   root to: "rooms#index"

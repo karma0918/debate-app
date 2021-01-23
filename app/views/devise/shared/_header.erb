@@ -1,5 +1,6 @@
 <header>
-
+<link href="css/style.css" rel="stylesheet">
+  <script src="index.js"></script>
 
   <div id= "app">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -35,6 +36,14 @@
           </li>
         <%end%>
       </ul>
+
+      <%= search_form_for @q, class: "form-inline my-2 my-lg-0",url:search_rooms_path do |f| %>
+      <div class="navbar-brand">Room検索</div>
+          
+          <i class="fas fa-search mr-3" style="color: royalblue;"></i>
+          <%= f.search_field :name_cont, class:"form-control mr-sm-2" %>
+          <%= f.submit 'Search',class:"btn btn-secondary my-2 my-sm-0" %>
+      <%end%>
     </div>
     </nav>
   </div>

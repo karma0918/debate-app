@@ -7,7 +7,7 @@ RSpec.describe Message, type: :model do
   it "contentが空では保存されない" do
     @message.content = nil
     @message.valid?
-    expect(@message.errors.full_messages).to include("Contentを入力してください")
+    expect(@message.errors.full_messages).to include("Content can't be blank")
   end
   it "contentがあれば保存する" do
     expect(@message).to be_valid

@@ -1,50 +1,4 @@
-<header>
-  <div id= "app">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">DEBATE_APP</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
-        </li>
-          <li class="nav-item nav-link">
-            <%= link_to "検索",search_rooms_path %>
-          </li>
-        <% if user_signed_in? %>
-        <li class="nav-item nav-link">
-            <i class="fas fa-sign-in-alt"></i><%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
-          </li>
-
-          <li class="nav-item nav-link">
-            <%= link_to current_user.nickname, "#" %>
-          </li>
-
-
-        <%else%>
-          <li class="nav-item nav-link ">
-            <i class="fas fa-sign-in-alt"></i><%= link_to "ログイン",new_user_session_path %>
-          </li>
-          <li class="nav-item nav-link">
-            <i class="fas fa-sign-in-alt"></i><%= link_to "サインイン",new_user_registration_path %>
-          </li>
-        <%end%>
-      </ul>
-
-      <%= search_form_for @q, class: "form-inline my-2 my-lg-0",url:search_rooms_path do |f| %>
-      <div class="navbar-brand">Room検索</div>
-          
-          <i class="fas fa-search mr-3" style="color: royalblue;"></i>
-          <%= f.search_field :name_cont, class:"form-control mr-sm-2" %>
-          <%= f.submit 'Search',class:"btn btn-secondary my-2 my-sm-0" %>
-      <%end%>
-    </div>
-    </nav>
-  </div>
-</header>
+<%= render "devise/shared/header" %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 
 <style>
@@ -115,26 +69,22 @@
 </div>
 <h1 id="room" class="text-center">最新の議題</h1>
 <div class="row">
-    <% if @rooms.length > 0 %>
-      <% @rooms.each do |room| %>
-      <div class="border border-primary mt-5 out-width ml-3 shadow pt-3">
-      <p class="ml-3 date-font">作成日<%= room.created_at.to_s(:datetime_jp) %></p>
-        <div class="text-center h-set">
-          <%= image_tag room.image.variant(resize: '150x150'), class: 'rounded-circle ' %>
-        </div>
-        <div class="back-color border border-secondary mb-3 shadow rounded-left ml-5 mr-5" >
-          <div class="col text-center h-set-auto">
-            <h3 class="ml-3 wrap h-set-ex border-bottom border-dark"><%= room.name%></h3>
-            <p class="wrap h-set-ex"><%=room.explanation%></p>
-            <p class="bg-secondary category rounded-left">・<%= room.category.name%></p>
-            <p><i class="fas fa-door-open"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
-
-          </div>
-        </div> 
+     <% @rooms.each do |room| %>
+     <div class="border border-primary mt-5 out-width ml-3 shadow pt-3">
+     <p class="ml-3 date-font">作成日<%= room.created_at.to_s(:datetime_jp) %></p>
+      <div class="text-center h-set">
+        <%= image_tag room.image.variant(resize: '150x150'), class: 'rounded-circle ' %>
       </div>
-      <%end%>
-    <% else %>
-      <h2 class="text-center">現在議題はありません</h2>
+      <div class="back-color border border-secondary mb-3 shadow rounded-left ml-5 mr-5" >
+        <div class="col text-center h-set-auto">
+          <h3 class="ml-3 wrap h-set-ex border-bottom border-dark"><%= room.name%></h3>
+          <p class="wrap h-set-ex"><%=room.explanation%></p>
+          <p class="bg-secondary category rounded-left">・<%= room.category.name%></p>
+          <p><i class="fas fa-comment-dots"></i><%=link_to "部屋に入る", room_messages_path(room.id), class: "btn btn-primary"%></p>
+
+        </div>
+      </div> 
+    </div>
     <%end%>
   </div>
   
