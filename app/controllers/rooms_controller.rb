@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   def index
     @user = User.all
 
-     @rooms = Room.page(params[:page]).per(5).order(id: "DESC")
+     @rooms = Room.page(params[:page]).per(9).order(id: "DESC")
   end
 
   def new
@@ -18,6 +18,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to root_path
     else
+      @q = Room.ransack(params[:q])
       render :new
     end
   end
