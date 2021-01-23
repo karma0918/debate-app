@@ -2,8 +2,12 @@
             <div class="input_msg_write">
               <%= form_with model: [@room, @message], local: true do |f|%>
                     <%= render 'devise/shared/error_messages', model: f.object %>
-                <i class="fas fa-search mr-3" style="color: royalblue;"></i><%= f.text_field :content, class: 'write_msg', placeholder: 'type a messaage' %>
+                <i class="fas fa-search mr-3" style="color: royalblue;"></i><%= f.text_area :content, class: 'form-control' , placeholder: 'type a messaage' %>
                 <i class="fa fa-paper-plane-o" aria-hidden="true"></i><i class="fas fa-paper-plane"></i><%= f.submit '送信', class: 'btn btn-primary' %>
                 <% end %>
             </div>
+          </div>
+          <div class="text-center">
+            <h4>この部屋の説明</h4>
+            <p class="wrap"><%= @room.explanation %></p>
           </div>
