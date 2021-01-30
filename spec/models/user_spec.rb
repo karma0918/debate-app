@@ -12,20 +12,18 @@ RSpec.describe User, type: :model do
     it "nameが空では登録できないこと" do
       @user.nickname = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname can't be blank")
+      expect(@user.errors.full_messages).to include("Nicknameを入力してください")
     end
     it "emailが空では登録ができない" do
       @user.email = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email can't be blank", "Email can't be blank", "Email is invalid")
-
+      expect(@user.errors.full_messages).to include("Eメールを入力してください", "Eメールは不正な値です")
     end
     it "passwordが空では登録ができない" do
       @user.password = nil
       @user.password_confirmation = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password can't be blank", "Password can't be blank")
-
+      expect(@user.errors.full_messages).to include("パスワードを入力してください")
 
     end
   end
