@@ -67,6 +67,6 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem "aws-sdk-s3", require: false
 group :production do
-  gem 'rails_12factor'
+  gem 'unicorn', '5.4.1'
 end
 
